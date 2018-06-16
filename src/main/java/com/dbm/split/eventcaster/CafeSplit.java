@@ -188,13 +188,13 @@ public class CafeSplit {
 			@SuppressWarnings("unchecked")
 			List<Item> drinks = (List<Item>) interaction.getObject().get("drinks");
 			for(Item drink : drinks) {
-				drinksTotal += priceList.getOrDefault(drink.getName(), 0.0);
+				drinksTotal += Prices.drinkList.getOrDefault(drink.getName(), 0.0);
 			}
 
 			@SuppressWarnings("unchecked")
 			List<Item> foods = (List<Item>) interaction.getObject().get("foods");
 			for(Item food : foods) {
-				foodTotal += priceList.getOrDefault(food.getName(), 0.0);
+				foodTotal += Prices.foodList.getOrDefault(food.getName(), 0.0);
 			}
 
 			client.track(interaction.getId(), "user", "drink_total", drinksTotal);
@@ -219,21 +219,4 @@ public class CafeSplit {
 		return results;
 	}
 
-	static Map<String, Double> priceList;
-	static {
-		priceList = new TreeMap<String, Double>();
-		
-		priceList.put("pepperoni_pizza", 16.75);
-		priceList.put("hot_wings", 11.25);
-		priceList.put("meatball_sandwich", 7.50);
-		priceList.put("salad", 8.50);
-		priceList.put("pasta_primavera", 6.99);
-		
-		priceList.put("soda", 2.25);
-		priceList.put("water", 0.0);
-		priceList.put("beer", 4.00);
-		priceList.put("wine", 5.50);
-		priceList.put("kombucha", 3.75);
-
-	}
 }
